@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  namespace: meow
+  labels: 
+    app: nginx-svc
+spec:
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8000
+    targetPort: 80
+  selector:
+    app: nginx-pod
+  type: ClusterIP
