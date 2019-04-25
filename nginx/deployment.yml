@@ -7,6 +7,11 @@ metadata:
       app: nginx-dep
       environment: production
 spec:
+   strategy:
+      rollingUpdate:
+         maxSurge: 1
+         maxUnavailable: 1
+      type: RollingUpdate
    replicas: 2
    template:
       metadata:
@@ -18,4 +23,4 @@ spec:
            name: nginx-container
            ports:
            - containerPort: 80
-   
+           imagePullPolicy: Always
